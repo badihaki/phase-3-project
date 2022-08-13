@@ -10,18 +10,40 @@ import CocktailList from './CocktailList';
 
 
 function App() {
+  const api = "http://localhost:9292"
+
+  useEffect( ()=>{
+    fetch(`${api}/restaurants`).then(r=>r.json()).then(
+      (data)=>{
+        setRestaurants(data);
+      })},[])
+  useEffect( ()=>{
+    fetch(`${api}/bartenders`).then(r=>r.json()).then(
+      (data)=>{
+        setBartenders(data);
+      })},[])
+  useEffect( ()=>{
+    fetch(`${api}/cocktails`).then(r=>r.json()).then(
+      (data)=>{
+        setCocktails(data);
+      })},[])
+  
+  const [restaurants, setRestaurants] = useState([]);
+  const [bartenders, setBartenders] = useState([]);
+  const [cocktails, setCocktails] = useState([]);
+
   return (
     <div className="App">
       <NavigationBar />
       <Switch>
         <Route exact path={'/restaurants'}>
-          <RestaurantList />
+          <RestaurantList restaurants={restaurants} />
         </Route>
         <Route exact path={'/bartenders'}>
-          <BartenderList />
+          <BartenderList bartenders={bartenders} />
         </Route>
         <Route exact path={'/cocktails'}>
-          <CocktailList />
+          <CocktailList cocktails={cocktails} />
         </Route>
         <Route exact path={'/'}>
           <Home />

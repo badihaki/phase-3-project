@@ -1,9 +1,9 @@
 import React from "react";
 
-function RestaurantList(){
+function RestaurantList( { restaurants } ){
     return(
         <div>
-            Restaurants List
+            <h1>Restaurants List</h1>
         </div>
     )
 }

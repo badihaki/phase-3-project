@@ -1,9 +1,9 @@
 import React from "react";
 
-function BartenderList(){
+function BartenderList( { bartenders } ){
     return(
         <div>
-            Bartenders List
+            <h1>Bartenders List</h1>
         </div>
     )
 }
