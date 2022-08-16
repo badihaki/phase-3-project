@@ -11,6 +11,10 @@ import CocktailList from './CocktailList';
 
 function App() {
   const api = "http://localhost:9292"
+  
+  const [restaurants, setRestaurants] = useState([]);
+  const [bartenders, setBartenders] = useState([]);
+  const [cocktails, setCocktails] = useState([]);
 
   useEffect( ()=>{
     fetch(`${api}/restaurants`).then(r=>r.json()).then(
@@ -27,23 +31,19 @@ function App() {
       (data)=>{
         setCocktails(data);
       })},[])
-  
-  const [restaurants, setRestaurants] = useState([]);
-  const [bartenders, setBartenders] = useState([]);
-  const [cocktails, setCocktails] = useState([]);
 
   return (
     <div className="App">
       <NavigationBar />
       <Switch>
         <Route exact path={'/restaurants'}>
-          <RestaurantList restaurants={restaurants} />
+          <RestaurantList restaurants={restaurants} bartenders={bartenders} />
         </Route>
         <Route exact path={'/bartenders'}>
-          <BartenderList bartenders={bartenders} />
+          <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} />
         </Route>
         <Route exact path={'/cocktails'}>
-          <CocktailList cocktails={cocktails} />
+          <CocktailList cocktails={cocktails} bartenders={bartenders} restaurants={restaurants} />
         </Route>
         <Route exact path={'/'}>
           <Home />
