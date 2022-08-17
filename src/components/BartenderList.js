@@ -7,7 +7,7 @@ function BartenderList( { bartenders, restaurants, cocktails } ){
         const restaurant = restaurants.find(place=>{
             return place.id === bartender.restaurant_id;
         })
-        const bartenderCocktails = cocktails.map(cocktail=>{
+        const bartenderCocktails = cocktails.filter(cocktail=>{
             return cocktail.bartender_id === bartender.id
         })
         return (
