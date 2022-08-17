@@ -1,5 +1,6 @@
 import React from "react";
 import BartenderCard from "./BartenderCard";
+import NewBartenderForm from "./NewBartenderForm";
 
 function BartenderList( { bartenders, restaurants, cocktails } ){
     
@@ -17,7 +18,9 @@ function BartenderList( { bartenders, restaurants, cocktails } ){
     
     return(
         <div>
-            <h1>Bartenders List</h1>
+            <h1>Bartenders</h1>
+            <NewBartenderForm />
+            <p>Below is the complete list of bartenders:</p>
             {bartenderCards}
         </div>
     )
