@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewBartenderForm(){
+function NewBartenderForm( { postNewBartender } ){
     const [bartenderForm, setBartenderForm] = useState(
         {
             "name": "",
@@ -9,13 +9,33 @@ function NewBartenderForm(){
         }
     )
     
+    function handleChangeEvent(event){
+        const key = event.target.name;
+        const value = event.target.value;
+        const formChange = {...bartenderForm};
+        formChange[key] = value;
+        setBartenderForm(formChange);
+    }
+    
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log(bartenderForm);
+        postNewBartender(bartenderForm);
+    }
+
     return(
         <div>
             <p>Add a new bartender to the registry using the form provided below.</p>
             <br/>
-            <form>
-                <input type={"text"} name={"name"} placeholder={"Bartender Name"} value={bartenderForm.name} />
-                <input type={"text"} name={"handle"} placeholder={"Nickname"} value={bartenderForm.handle} />
+            <form onSubmit={handleSubmit}>
+                <span>
+                    <text>Name: </text>
+                    <input type={"text"} name={"name"} placeholder={"Bartender Name"} value={bartenderForm.name} onChange={handleChangeEvent} />
+                </span>
+                <span>
+                    <text> Handle/Nickname: </text>
+                    <input type={"text"} name={"handle"} placeholder={"Nickname"} value={bartenderForm.handle} onChange={handleChangeEvent} />
+                </span>
                 <br />
                 <button type='submit'>Create new Bartender</button>
             </form>

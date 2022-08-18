@@ -32,6 +32,19 @@ function App() {
         setCocktails(data);
       })},[])
 
+      function postNewBartender(bartender){
+        fetch(`${api}/bartenders`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(bartender)
+        }).then(r=>r.json).then(data=>{
+          const newBartenderList = [...bartenders, data];
+          setBartenders(newBartenderList);
+        })
+      }
+
   return (
     <div className="App">
       <NavigationBar />
@@ -40,7 +53,7 @@ function App() {
           <RestaurantList restaurants={restaurants} bartenders={bartenders} />
         </Route>
         <Route exact path={'/bartenders'}>
-          <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} />
+          <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} postNewBartender={postNewBartender} />
         </Route>
         <Route exact path={'/cocktails'}>
           <CocktailList cocktails={cocktails} bartenders={bartenders} restaurants={restaurants} />
