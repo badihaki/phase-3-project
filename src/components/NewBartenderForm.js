@@ -17,8 +17,18 @@ function NewBartenderForm( { postNewBartender } ){
         setBartenderForm(formChange);
     }
     
-    function handleSubmit(){
+    function handleSubmit(e){
+        e.preventDefault();
         postNewBartender(bartenderForm);
+        clearForm();
+    }
+    function clearForm(){
+        const form = {
+            "name": "",
+            "handle": "",
+            "restaurant_id":null
+        }
+        setBartenderForm(form);
     }
 
     return(

@@ -6,11 +6,6 @@ function RestaurantList( { restaurants, bartenders } ){
         const bartendersOnStaff = bartenders.filter((bartender)=>{
             return bartender.restaurant_id === restaurant.id;
         })
-        /*
-        console.log(`${restaurant.name}'s bartending staff vvv`);
-        console.log(bartendersOnStaff);
-        console.log(`${restaurant.name}'s bartending staff ^^^`);
-        */
         return(
             <div key={restaurant.id}>
                 <RestaurantCard restaurant={restaurant} bartenders={bartendersOnStaff} />

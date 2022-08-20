@@ -16,7 +16,17 @@ function CocktailForm({ bartender, postNewCocktail }){
         setNewCocktailForm(formChange);
     }
     function handleSubmit(e){
+        e.preventDefault();
         postNewCocktail(newCocktilForm);
+        clearForm();
+    }
+    function clearForm(){
+        const form = {
+            "name":"",
+            "description":"",
+            "bartender_id":bartender.id
+        }
+        setNewCocktailForm(form);
     }
 
     return(
