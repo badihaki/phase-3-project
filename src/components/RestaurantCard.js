@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ForeHireDropDown from "./ForHireDropdown";
 
-function RestaurantCard({ restaurant, bartenders, forHireList }){
+function RestaurantCard({ restaurant, bartenders, forHireList, updateBartender }){
     const [showBartender, setShowBartender] = useState(true);
 
     const bartenderingStaff = bartenders.map( (bartender)=>{
@@ -25,8 +25,8 @@ function RestaurantCard({ restaurant, bartenders, forHireList }){
             </ul>
             <p>
                 Hire more bartenders: <br />
-                <ForeHireDropDown forHireList={forHireList} />
             </p>
+            <ForeHireDropDown restaurant={restaurant} forHireList={forHireList} updateBartender={updateBartender} />
         </div>
     )
 }

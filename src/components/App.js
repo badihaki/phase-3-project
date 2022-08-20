@@ -47,7 +47,7 @@ function App() {
 
     function updateBartender(bartender){
       fetch(`${api}/bartenders/${bartender.id}`,{
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json"
         },
@@ -76,7 +76,7 @@ function App() {
       <NavigationBar />
       <Switch>
         <Route exact path={'/restaurants'}>
-          <RestaurantList restaurants={restaurants} bartenders={bartenders} />
+          <RestaurantList restaurants={restaurants} bartenders={bartenders} updateBartender={updateBartender} />
         </Route>
         <Route exact path={'/bartenders'}>
           <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} postNewBartender={postNewBartender} postNewCocktail={postNewCocktail} />

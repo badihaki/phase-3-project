@@ -1,7 +1,7 @@
 import React from "react";
 import RestaurantCard from "./RestaurantCard";
 
-function RestaurantList( { restaurants, bartenders } ){
+function RestaurantList( { restaurants, bartenders, updateBartender } ){
         const restaurantCards = restaurants.map( (restaurant)=>{
         const bartendersOnStaff = bartenders.filter((bartender)=>{
             return bartender.restaurant_id === restaurant.id;
@@ -11,7 +11,7 @@ function RestaurantList( { restaurants, bartenders } ){
         })
         return(
             <div key={restaurant.id}>
-                <RestaurantCard restaurant={restaurant} bartenders={bartendersOnStaff} forHireList={bartendersForHire} />
+                <RestaurantCard restaurant={restaurant} bartenders={bartendersOnStaff} forHireList={bartendersForHire} updateBartender={updateBartender} />
                 <br />
             </div>
         )
