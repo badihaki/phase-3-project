@@ -2,17 +2,21 @@ import React from "react";
 import RestaurantCard from "./RestaurantCard";
 
 function RestaurantList( { restaurants, bartenders } ){
-    const restaurantCards = restaurants.map( (restaurant)=>{
+        const restaurantCards = restaurants.map( (restaurant)=>{
         const bartendersOnStaff = bartenders.filter((bartender)=>{
             return bartender.restaurant_id === restaurant.id;
         })
+        const bartendersForHire = bartenders.filter(bartender=>{
+            return bartender.restaurant_id === null;
+        })
         return(
             <div key={restaurant.id}>
-                <RestaurantCard restaurant={restaurant} bartenders={bartendersOnStaff} />
+                <RestaurantCard restaurant={restaurant} bartenders={bartendersOnStaff} forHireList={bartendersForHire} />
                 <br />
             </div>
         )
     })
+
     
     return(
         <div>
