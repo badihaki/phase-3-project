@@ -17,9 +17,7 @@ function NewBartenderForm( { postNewBartender } ){
         setBartenderForm(formChange);
     }
     
-    function handleSubmit(event){
-        // event.preventDefault();
-        console.log(bartenderForm);
+    function handleSubmit(){
         postNewBartender(bartenderForm);
     }
 

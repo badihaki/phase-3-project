@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import CocktailForm from "./CocktailForm";
 import {NavLink} from "react-router-dom";
 
-function BartenderCard({ bartender, restaurant, cocktails }){
+function BartenderCard({ bartender, restaurant, cocktails, postNewCocktail }){
     const hasRestaurant = ()=>{
         return bartender.restaurant_id !== null;
     }
@@ -30,7 +30,7 @@ function BartenderCard({ bartender, restaurant, cocktails }){
             <p style={{fontWeight:'bold'}} >Created Cocktails</p>
             <ul>{cocktailListings}</ul>
             <button onClick={handleShowFormButton}>{showCokctailForm ? "Hide Form" : "Add New Cocktail"}</button>
-            {showCokctailForm? <CocktailForm bartender={bartender} /> : "" }
+            {showCokctailForm? <CocktailForm bartender={bartender} postNewCocktail={postNewCocktail} /> : "" }
         </div>
     )
 }
