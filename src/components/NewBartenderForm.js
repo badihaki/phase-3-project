@@ -18,7 +18,7 @@ function NewBartenderForm( { postNewBartender } ){
     }
     
     function handleSubmit(event){
-        event.preventDefault();
+        // event.preventDefault();
         console.log(bartenderForm);
         postNewBartender(bartenderForm);
     }
