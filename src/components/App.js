@@ -71,6 +71,21 @@ function App() {
       })
     }
 
+    function destroyCocktail(cocktail){
+      fetch(`${api}/cocktails/${cocktail.id}`,{
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cocktail)
+      }).then(r=>r.json).then(data=>{
+        const newDrinksList = cocktails.filter(cocktail=>{
+          return cocktail.id !== data.id;
+        })
+        setCocktails(newDrinksList);
+      })
+    }
+
   return (
     <div className="App">
       <NavigationBar />
@@ -79,7 +94,7 @@ function App() {
           <RestaurantList restaurants={restaurants} bartenders={bartenders} updateBartender={updateBartender} />
         </Route>
         <Route exact path={'/bartenders'}>
-          <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} postNewBartender={postNewBartender} postNewCocktail={postNewCocktail} />
+          <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} postNewBartender={postNewBartender} postNewCocktail={postNewCocktail} destroyCocktail={destroyCocktail} />
         </Route>
         <Route exact path={'/cocktails'}>
           <CocktailList cocktails={cocktails} bartenders={bartenders} />

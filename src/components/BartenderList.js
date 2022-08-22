@@ -2,7 +2,7 @@ import React from "react";
 import BartenderCard from "./BartenderCard";
 import NewBartenderForm from "./NewBartenderForm";
 
-function BartenderList( { bartenders, restaurants, cocktails, postNewBartender, postNewCocktail } ){
+function BartenderList( { bartenders, restaurants, cocktails, postNewBartender, postNewCocktail, destroyCocktail } ){
     
     const bartenderCards = bartenders.map((bartender)=>{
         const restaurant = restaurants.find(place=>{
@@ -12,7 +12,7 @@ function BartenderList( { bartenders, restaurants, cocktails, postNewBartender, 
             return cocktail.bartender_id === bartender.id
         })
         return (
-        <BartenderCard key={bartender.id} bartender={bartender} restaurant={restaurant} cocktails={bartenderCocktails} postNewCocktail={postNewCocktail} />
+        <BartenderCard key={bartender.id} bartender={bartender} restaurant={restaurant} cocktails={bartenderCocktails} postNewCocktail={postNewCocktail} destroyCocktail={destroyCocktail} />
         )
     })
     
