@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 function BartenderCard({ bartender, restaurant, cocktails, postNewCocktail }){
     const hasRestaurant = ()=>{
-        return bartender.restaurant_id !== null;
+        return restaurant !== undefined;
     }
     const [showCokctailForm, setShowCocktailForm] = useState(false);
     const cocktailListings = cocktails.map(cocktail=>{
@@ -22,11 +22,12 @@ function BartenderCard({ bartender, restaurant, cocktails, postNewCocktail }){
         setShowCocktailForm(result);
     }
 
+    // debugger;
     return(
         <div>
             <h1>{bartender.name}</h1>
             <h2>They call me "{bartender.handle}"</h2>
-            <h3>{hasRestaurant? "I'm looking for work!!" : `See me at ${restaurant.name}` }!</h3>
+            <h3>{hasRestaurant() ? `See me at ${restaurant.name}` : "I'm looking for work!!" }!</h3>
             <p style={{fontWeight:'bold'}} >Created Cocktails</p>
             <ul>{cocktailListings}</ul>
             <button onClick={handleShowFormButton}>{showCokctailForm ? "Hide Form" : "Add New Cocktail"}</button>

@@ -98,10 +98,12 @@ you'd be able to fire your bartender, which removes them from the database, or c
     - Switches
         - Home
         - RestaurantList
-            - Restaurant
+            - RestaurantCard
+                - ForHireDropDrown
         - BartenderList
-            - Bartender
+            - NewBartenderForm
+            - BartenderCard
         - CocktailList
-            - Cocktail
+            - CocktailCard
 
  ### Component Details
