@@ -1,12 +1,12 @@
 import React from "react";
 import CocktailCard from "./CocktailCard";
 
-function CocktailList( { cocktails, bartenders } ){
+function CocktailList( { cocktails, bartenders, updateCocktail } ){
     const cocktailCards = cocktails.map(drink=>{
         const bartender = bartenders.filter(person=>{
             return drink.bartender_id === person.id;
         })
-        return <CocktailCard key={drink.id} cocktail={drink} bartender={bartender[0]} />;
+        return <CocktailCard key={drink.id} cocktail={drink} bartender={bartender[0]} updateCocktail={updateCocktail} />;
     })
 
     return(

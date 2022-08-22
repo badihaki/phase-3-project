@@ -71,6 +71,19 @@ function App() {
       })
     }
 
+    function updateCocktail(cocktail){
+      fetch(`${api}/cocktails/${cocktail.id}`,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cocktail)
+      }).then(r=>r.json).then(data=>{
+        const newCocktailList = [...cocktails, data];
+        setBartenders(newCocktailList);
+      })
+    }
+
     function destroyCocktail(cocktail){
       fetch(`${api}/cocktails/${cocktail.id}`,{
         method: "DELETE",
@@ -97,7 +110,7 @@ function App() {
           <BartenderList bartenders={bartenders} restaurants={restaurants} cocktails={cocktails} postNewBartender={postNewBartender} postNewCocktail={postNewCocktail} destroyCocktail={destroyCocktail} />
         </Route>
         <Route exact path={'/cocktails'}>
-          <CocktailList cocktails={cocktails} bartenders={bartenders} />
+          <CocktailList cocktails={cocktails} bartenders={bartenders} updateCocktail={updateCocktail} />
         </Route>
         <Route exact path={'/'}>
           <Home />

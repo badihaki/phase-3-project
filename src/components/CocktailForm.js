@@ -9,7 +9,6 @@ function CocktailForm({ bartender, postNewCocktail }){
 
     function handleFormChange(event){
         const key = event.target.name;
-        console.log(key);
         const value = event.target.value;
         const formChange = {...newCocktilForm};
         formChange[key] = value;
