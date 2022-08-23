@@ -20,7 +20,7 @@ function ForeHireDropDown( { restaurant, forHireList, updateBartender }){
             const updatedBartender = {...selectedBartender, restaurant_id:restaurant.id};
             console.log('sending the data below for PATCHing:');
             console.log(updatedBartender);
-            updateBartender(updatedBartender);            
+            updateBartender(updatedBartender);
         }
     }
 

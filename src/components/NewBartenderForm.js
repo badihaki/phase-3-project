@@ -37,14 +37,17 @@ function NewBartenderForm( { postNewBartender } ){
             <br/>
             <form onSubmit={handleSubmit}>
                 <span>
-                    <text>Name: </text>
+                    <div>Name:
+                    <br />
                     <input type={"text"} name={"name"} placeholder={"Bartender Name"} value={bartenderForm.name} onChange={handleChangeEvent} />
+                    </div>
                 </span>
                 <span>
-                    <text> Handle/Nickname: </text>
-                    <input type={"text"} name={"handle"} placeholder={"Nickname"} value={bartenderForm.handle} onChange={handleChangeEvent} />
+                    <div>Handle/Nickname:
+                        <br />
+                        <input type={"text"} name={"handle"} placeholder={"Nickname"} value={bartenderForm.handle} onChange={handleChangeEvent} />
+                    </div>
                 </span>
-                <br />
                 <button type='submit'>Create new Bartender</button>
             </form>
         </div>

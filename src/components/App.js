@@ -40,7 +40,7 @@ function App() {
         },
         body: JSON.stringify(bartender)
       }).then(r=>r.json).then(data=>{
-        const newBartenderList = [...bartenders, data];
+        const newBartenderList = [...bartenders, bartender];
         setBartenders(newBartenderList);
       })
     }
@@ -52,8 +52,8 @@ function App() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(bartender)
-      }).then(r=>r.json).then(data=>{
-        const newBartenderList = [...bartenders, data];
+      }).then((r)=>r.json).then((data)=>{
+        const newBartenderList = [...bartenders, bartender];
         setBartenders(newBartenderList);
       })
     }
@@ -66,7 +66,8 @@ function App() {
         },
         body: JSON.stringify(cocktail)
       }).then(r=>r.json).then(data=>{
-        const newDrinksList = [...cocktails, data];
+        console.log(data);
+        const newDrinksList = [...cocktails, cocktail];
         setCocktails(newDrinksList);
       })
     }
@@ -79,7 +80,7 @@ function App() {
         },
         body: JSON.stringify(cocktail)
       }).then(r=>r.json).then(data=>{
-        const newCocktailList = [...cocktails, data];
+        const newCocktailList = [...cocktails, cocktail];
         setBartenders(newCocktailList);
       })
     }
@@ -92,8 +93,8 @@ function App() {
         },
         body: JSON.stringify(cocktail)
       }).then(r=>r.json).then(data=>{
-        const newDrinksList = cocktails.filter(cocktail=>{
-          return cocktail.id !== data.id;
+        const newDrinksList = cocktails.filter(drink=>{
+          return drink.id !== cocktail.id;
         })
         setCocktails(newDrinksList);
       })

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import CocktailForm from "./CocktailForm";
-import {NavLink} from "react-router-dom";
 
 function BartenderCard({ bartender, restaurant, cocktails, postNewCocktail, destroyCocktail }){
     const hasRestaurant = ()=>{
