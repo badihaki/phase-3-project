@@ -1,4 +1,3 @@
-import logo from '../logo.svg';
 import '../App.css';
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from "react-router-dom";
@@ -19,16 +18,19 @@ function App() {
   useEffect( ()=>{
     fetch(`${api}/restaurants`).then(r=>r.json()).then(
       (data)=>{
+        console.log(data);
         setRestaurants(data);
       })},[])
   useEffect( ()=>{
     fetch(`${api}/bartenders`).then(r=>r.json()).then(
       (data)=>{
+        console.log(data);
         setBartenders(data);
       })},[])
   useEffect( ()=>{
     fetch(`${api}/cocktails`).then(r=>r.json()).then(
       (data)=>{
+        console.log(data);
         setCocktails(data);
       })},[])
 
@@ -71,7 +73,6 @@ function App() {
         setCocktails(newDrinksList);
       })
     }
-
     function updateCocktail(cocktail){
       fetch(`${api}/cocktails/${cocktail.id}`,{
         method: "PATCH",
@@ -80,8 +81,14 @@ function App() {
         },
         body: JSON.stringify(cocktail)
       }).then(r=>r.json).then(data=>{
-        const newCocktailList = [...cocktails, cocktail];
-        setBartenders(newCocktailList);
+        // const newCocktailList = [...cocktails, cocktail];
+        const newCocktailList = [...cocktails];
+        const updatedListing = newCocktailList.find((drink) => {
+          return drink.id === cocktail.id
+        })
+        updatedListing.name = cocktail.name;
+        updatedListing.description = cocktail.description;
+        setCocktails(newCocktailList);
       })
     }
 

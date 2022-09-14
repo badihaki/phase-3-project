@@ -34,8 +34,16 @@ function CocktailUpdateForm({cocktail, updateCocktail, bartender}){
 
     function handleSubmit(e){
         e.preventDefault();
-        //console.log(cocktailForm);
+        console.log(cocktailForm);
         updateCocktail(cocktailForm);
+        setForm(
+            {
+                "id" : cocktail.id,
+                "name" : cocktail.name,
+                "description" : cocktail.description,
+                "bartender_id" : bartender.id
+            }
+        )
     }
     
     return (

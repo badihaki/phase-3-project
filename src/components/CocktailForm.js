@@ -4,7 +4,7 @@ function CocktailForm({ bartender, postNewCocktail }){
     const [newCocktilForm, setNewCocktailForm] = useState({
         "name":"",
         "description":"",
-        "bartender_id":bartender.id
+        "bartender_id": bartender.id
     })
 
     function handleFormChange(event){
